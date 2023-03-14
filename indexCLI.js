@@ -129,8 +129,15 @@ async function converWait(){
   const spinner = createSpinner("Converting...").start();
   await sleep()
   spinner.success({text: `Converted`})
+  success()
+}
 
-  
+function success(){
+  const msg = "Converted sucessfully";
+
+  figlet(msg, (err, data) => {
+    console.log(gradient.retro.multiline(data));
+  });
 }
 
 //! Calling all functions
