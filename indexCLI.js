@@ -128,7 +128,7 @@ async function converWait(){
   This might take several minutes..`))
   const spinner = createSpinner("Converting...").start();
   await sleep()
-  spinner.success({text: `Converted`})
+  spinner.success({text: `Audio created in ouput directory`})
   success()
 }
 
@@ -137,8 +137,23 @@ function success(){
 
   figlet(msg, (err, data) => {
     console.log(gradient.retro.multiline(data));
+    deleteTemp()
   });
 }
 
+function deleteTemp() {
+
+  inquirer
+  .prompt(
+    {
+      type: 'confirm',
+      name: 'tempDelete',
+      message: 'Do you want to delete the temporary file created?',
+    })
+  .then((answers) => {
+    // console.log(JSON.stringify(answers, null, '  '));
+  });
+
+}
 //! Calling all functions
 start();
